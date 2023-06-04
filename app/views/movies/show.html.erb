@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="card" style="width: 18rem;">
+  <% random_number = rand(1..500).to_i %>    
+    <img class="card-img-top" src="https://picsum.photos/id/<%= random_number %>/500/280" alt="Imagen aleatoria">  
+      <div class="card-header fw-bold">
+        <%= @movie.name %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">ID Movie: <%= @movie.id %></li>
+        
+      </ul>      
+      <strong class="card-text ms-3">Clients: </strong>
+          <% if @movie.clients.last.present? %>
+              <p class="card-text ms-3">
+                  <% @movie.clients.each do |client|%>
+                      <%= client.name %> <br>
+                  <% end %>                  
+           <% else %>
+              <p class="text-danger ms-3">No clients yet</p>
+          <% end %> 
+      </p>
+  </div>
+
+
+<%#= render @movie %>
+
+<div class="my-3">
+  <%= link_to "Edit this movie", edit_movie_path(@movie), class: "btn btn-warning me-3" %>
+  <%= link_to "Back to movies", movies_path, class:"btn btn-secondary" %>
+
+  <%= button_to "Destroy this movie", @movie, method: :delete, class: "btn btn-danger my-3" %>
+</div>

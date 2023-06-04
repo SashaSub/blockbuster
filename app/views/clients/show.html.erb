@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="card" style="width: 18rem;">
+      <div class="card-header fw-bold">
+        Client: <%= @client.name %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">ID Client: <%= @client.id %></li>
+        <li class="list-group-item">Name: <%= @client.name %></li>
+        <li class="list-group-item">Age: <%= @client.age %></li>   
+        <% if @client.movie.present? %>
+          <li class="list-group-item">Movie: <%= @client.movie.name %></li> 
+        <% else %>
+          <p class="text-danger ms-3">Client has no movies</p>
+        <% end %>      
+      </ul>            
+  </div>
+
+<div>
+  <%= link_to "Edit this client", edit_client_path(@client), class: "btn btn-warning m-3" %>
+  <%= link_to "Back to clients", clients_path, class:"btn btn-secondary" %>
+  <%= button_to "Destroy this client", @client, method: :delete, class: "btn btn-danger mx-3" %>
+</div>
